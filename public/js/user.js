@@ -66,20 +66,39 @@ function isWithinGeofence(userLatLng) {
 }
 
 
-// Function to handle geofence events
 function handleGeofenceEvent(isEntering, userLatLng) {
     const timestamp = new Date().toISOString();
     if (isEntering) {
         // Record check-in
         console.log(`Check-in at ${timestamp}, Location: ${userLatLng}`);
-        
-        // Save check-in data to localStorage or server
+        localStorage.setItem('checkInTime', timestamp);
+        localStorage.removeItem('checkOutTime'); // Clear previous check-out time
     } else {
-        // Record check-out
-        console.log(`Check-out at ${timestamp}, Location: ${userLatLng}`);
-        // Save check-out data to localStorage or server
+        // Record check-out only if there is a check-in time and no existing check-out time
+        const checkInTime = localStorage.getItem('checkInTime');
+        const checkOutTime = localStorage.getItem('checkOutTime');
+        if (checkInTime && !checkOutTime) {
+            console.log(`Check-out at ${timestamp}, Location: ${userLatLng}`);
+            localStorage.setItem('checkOutTime', timestamp);
+            calculateWorkingHours();
+        } else if (!checkInTime) {
+            console.log('No check-in time found. Cannot record check-out.');
+        } else {
+            console.log('Check-out time already recorded.');
+        }
     }
 }
+
+
+
+function calculateWorkingHours() {
+    const checkInTime = new Date(localStorage.getItem('checkInTime'));
+    const checkOutTime = new Date(localStorage.getItem('checkOutTime'));
+    const diffMs = checkOutTime - checkInTime; // Difference in milliseconds
+    const diffHrs = diffMs / (1000 * 60 * 60); // Convert to hours
+    console.log(`Total working hours: ${diffHrs.toFixed(2)} hours`);
+}
+
 
 
 async function watchPositionAsync() {

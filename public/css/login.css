@@ -1,18 +1,12 @@
 #main{
-    background-image:url("/new.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-size: cover;
+    /* background-image:url("/new.jpg"); */
+    /* background: linear-gradient(132deg, rgb(34, 181, 254) 0.00%, rgb(255, 186, 214) 100.00%); */
+    background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+
+ 
+    
 }
 #mainadmin{
-    background-image:url("/new2.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-size: cover;
+    background: linear-gradient(62deg, rgb(21, 213, 235) 0.00%, rgb(255, 0, 191) 100.00%);
 }
-#card{
-    margin-top: 23%;
-}
-#cardreg{
-    margin-top: 12%;
-}
+

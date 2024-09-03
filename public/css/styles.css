@@ -360,7 +360,7 @@ textarea {
   line-height: inherit;
 }
 #inputEmail,#inputPassword{
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   color: green;
 }
 
@@ -4173,7 +4173,7 @@ textarea.form-control-lg {
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
-  backdrop-filter: blur(50px);
+  /* backdrop-filter: blur(50px); */
   /* --bs-card-bg: #fff; */
   --bs-card-img-overlay-padding: 1rem;
   --bs-card-group-margin: 0.75rem;

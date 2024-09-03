@@ -75,7 +75,7 @@ app.post('/register', async (req, res) => {
             firstname: firstname,
             sirname: sirname,
             email: email,
-            password: password, // Note: Password should be hashed before storing in a real application
+            password: password, 
         };
 
         try {
@@ -175,7 +175,7 @@ app.post('/login/admin', async (req, res) => {
                 // Compare the provided password with the hashed password in the database
                 // const match = await bcrypt.compare(adminpassword, admin.password);
 
-                if (adminemail == adminemail && admin.adminpassword == admin.adminpassword) {
+                if (adminemail == admin.adminemail && adminpassword == admin.adminpassword) {
                     res.render('admin.ejs');
                 } else {
                     res.render('error.ejs', { message: 'Wrong credentials' });

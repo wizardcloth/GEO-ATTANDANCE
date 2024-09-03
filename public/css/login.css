@@ -1,0 +1,18 @@
+#main{
+    background-image:url("/new.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: cover;
+}
+#mainadmin{
+    background-image:url("/new2.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: cover;
+}
+#card{
+    margin-top: 23%;
+}
+#cardreg{
+    margin-top: 12%;
+}

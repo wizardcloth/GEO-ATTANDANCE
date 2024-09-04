@@ -1,5 +1,5 @@
 // Initialize the map
-let map = L.map('map').setView([28.63417814284452, 77.44696140289308], 15);
+let map = L.map('map').setView([28.634608, 77.447404], 14);
 
 // Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -11,6 +11,14 @@ document.getElementById('locate').addEventListener('click', function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             let lat = position.coords.latitude;
             let lng = position.coords.longitude;
+
+            // Clear any old location data from local storage
+            localStorage.removeItem('lat');
+            localStorage.removeItem('lng');
+
+            // Store the new location in local storage
+            localStorage.setItem('lat', lat);
+            localStorage.setItem('lng', lng);
 
             // Create a marker at the current location
             L.marker([lat, lng]).addTo(map)
@@ -27,6 +35,7 @@ document.getElementById('locate').addEventListener('click', function () {
         alert('Geolocation is not supported by this browser.');
     }
 });
+
 
 
 // Create a feature group to hold editable layers

@@ -12,14 +12,6 @@ document.getElementById('locate').addEventListener('click', function () {
             let lat = position.coords.latitude;
             let lng = position.coords.longitude;
 
-            // Clear any old location data from local storage
-            localStorage.removeItem('lat');
-            localStorage.removeItem('lng');
-
-            // Store the new location in local storage
-            localStorage.setItem('lat', lat);
-            localStorage.setItem('lng', lng);
-
             // Create a marker at the current location
             L.marker([lat, lng]).addTo(map)
                 .bindPopup('You are here!')
@@ -35,8 +27,6 @@ document.getElementById('locate').addEventListener('click', function () {
         alert('Geolocation is not supported by this browser.');
     }
 });
-
-
 
 // Create a feature group to hold editable layers
 let editableLayers = new L.FeatureGroup();

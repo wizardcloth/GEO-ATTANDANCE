@@ -154,39 +154,9 @@ function loadSavedCircles() {
 // Call to load saved circles on initialization
 loadSavedCircles();
 
-// document.getElementById('locate').addEventListener('click', function () {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(function (position) {
-//             let lat = position.coords.latitude;
-//             let lng = position.coords.longitude;
-
-//             // Create a marker at the current location
-//             L.marker([lat, lng]).addTo(map)
-//                 .bindPopup('You are here!')
-//                 .openPopup();
-
-//             // Center the map on the current location
-//             map.setView([lat, lng], 13);
-//         }, function (error) {
-//             console.error('Error getting location:', error);
-//             alert('Unable to retrieve your location.');
-//         });
-//     } else {
-//         alert('Geolocation is not supported by this browser.');
-//     }
-// });
-
-document.getElementById('locate').addEventListener('click', async function () {
+document.getElementById('locate').addEventListener('click', function () {
     if (navigator.geolocation) {
-        try {
-            const position = await new Promise((resolve, reject) => {
-                navigator.geolocation.getCurrentPosition(resolve, (error) => {
-                    console.error('Error getting location:', error.code, error.message);
-                    alert('Unable to retrieve your location.');
-                    reject(error);
-                }, { timeout: 60000 }); // 10 seconds timeout
-            });
-
+        navigator.geolocation.getCurrentPosition(function (position) {
             let lat = position.coords.latitude;
             let lng = position.coords.longitude;
 
@@ -196,15 +166,45 @@ document.getElementById('locate').addEventListener('click', async function () {
                 .openPopup();
 
             // Center the map on the current location
-            map.setView([lat, lng], 16);
-        } catch (error) {
+            map.setView([lat, lng], 13);
+        }, function (error) {
             console.error('Error getting location:', error);
             alert('Unable to retrieve your location.');
-        }
+        });
     } else {
         alert('Geolocation is not supported by this browser.');
     }
 });
+
+// document.getElementById('locate').addEventListener('click', async function () {
+//     if (navigator.geolocation) {
+//         try {
+//             const position = await new Promise((resolve, reject) => {
+//                 navigator.geolocation.getCurrentPosition(resolve, (error) => {
+//                     console.error('Error getting location:', error.code, error.message);
+//                     alert('Unable to retrieve your location.');
+//                     reject(error);
+//                 }, { timeout: 60000 }); // 10 seconds timeout
+//             });
+
+//             let lat = position.coords.latitude;
+//             let lng = position.coords.longitude;
+
+//             // Create a marker at the current location
+//             L.marker([lat, lng]).addTo(map)
+//                 .bindPopup('You are here!')
+//                 .openPopup();
+
+//             // Center the map on the current location
+//             map.setView([lat, lng], 16);
+//         } catch (error) {
+//             console.error('Error getting location:', error);
+//             alert('Unable to retrieve your location.');
+//         }
+//     } else {
+//         alert('Geolocation is not supported by this browser.');
+//     }
+// });
 
 function autoReload() {
     window.location.reload();

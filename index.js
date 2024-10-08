@@ -58,7 +58,7 @@ app.get("/register", (req, res) => {
 const { MongoClient } = require('mongodb');
 
 // Replace with your MongoDB connection URI
-const uri = 'mongodb+srv://wizardcloth:wizardcloth@cluster0.lbpgg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = 'mongodb+srv://wizardcloth:wizardcloth3500@user.yvswa.mongodb.net/?retryWrites=true&w=majority&appName=user';
 const client = new MongoClient(uri);
 
 app.post('/register', async (req, res) => {
@@ -81,7 +81,7 @@ app.post('/register', async (req, res) => {
         try {
             // Connect to the MongoDB client
             await client.connect();
-
+            console.log("connected");
             // Access the database and collection
             const database = client.db('your_database_name');
             const collection = database.collection('users');

@@ -57,9 +57,8 @@ app.get("/register", (req, res) => {
 
 const { MongoClient } = require('mongodb');
 
-// Replace with your MongoDB connection URI
-const uri = 'mongodb+srv://wizardcloth:wizardcloth3500@user.yvswa.mongodb.net/?retryWrites=true&w=majority&appName=user';
-const client = new MongoClient(uri);
+// Replace with your MongoDB connection process.env.uri
+const client = new MongoClient(process.env.uri);
 
 app.post('/register', async (req, res) => {
     let { firstname, sirname, email, password, conformpassword } = req.body;
@@ -105,7 +104,7 @@ app.post('/register', async (req, res) => {
 });
 
 
-// Replace with your MongoDB connection URI
+// Replace with your MongoDB connection process.env.uri
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
